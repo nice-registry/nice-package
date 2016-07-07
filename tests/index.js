@@ -35,5 +35,20 @@ test('Package', function (t) {
   t.notOk(pkg._shasum, '_shasum')
   t.notOk(pkg._from, '_from')
 
+  t.comment('convenience functions')
+  t.ok(pkg.dependsOn('finalhandler'), 'dependsOn')
+  t.notOk(pkg.dependsOn('monkeys'), 'dependsOn')
+  t.ok(pkg.devDependsOn('istanbul'), 'devDependsOn')
+
+  t.ok(pkg.depNames.indexOf('finalhandler') > -1, 'depNames')
+  t.ok(pkg.devDepNames.indexOf('istanbul') > -1, 'devDepNames')
+
+  t.ok(pkg.mentions('minimalist web framework'), '`mentions` looks for a string anywhere in the object')
+  t.ok(pkg.mentions('MINIMALIST WEB FRAMEWORK'), '`mentions` is case insensitive')
+
+  t.comment('reusing packages')
+  var repkg = new Package(pkg)
+  t.ok(repkg.name, 'packages can be reconstituted from an already-cleaned package object')
+
   t.end()
 })

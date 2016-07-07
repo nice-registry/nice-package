@@ -1,4 +1,4 @@
-# nice-package
+# nice-package ✨📦✨
 
 > Clean up messy package metadata from the npm registry
 
@@ -41,6 +41,37 @@ got('https://registry.npmjs.com/express', {json:true})
   })
 ```
 
+### Convenience Methods
+
+A nice package comes with convenience methods:
+
+#### `pkg.mentions(query)`
+
+* `query` String
+
+Performs a case-insensitive search against the JSON-stringified object. Returns
+a Boolean indicating whether the given query is present in the object.
+
+#### `pkg.dependsOn(pkgName)`
+
+* `pkgName` String - The name of another package
+
+Returns a Boolean indicating whether the given `pkgName` is listed in `dependencies`.
+
+#### `pkg.devDependsOn(pkgName)`
+
+* `pkgName` String - The name of another package
+
+Returns a Boolean indicating whether the given `pkgName` is listed in `devDependencies`.
+
+#### `pkg.depNames`
+
+A getter method that returns an array of the `dependencies` keys.
+
+#### `pkg.devDepNames`
+
+A getter method that returns an array of the `devDependencies` keys.
+
 ## Tests
 
 ```sh
@@ -62,12 +93,9 @@ npm test
 - [tap-spec](https://github.com/scottcorgan/tap-spec): Formatted TAP output like Mocha&#39;s spec reporter
 - [tape](https://github.com/substack/tape): tap-producing test harness for node and browsers
 
-
 ## License
 
 MIT
-
-
 
 ## Credits
 
