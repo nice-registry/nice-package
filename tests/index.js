@@ -1,0 +1,39 @@
+const test = require('tape')
+const Package = require('..')
+const semver = require('semver')
+const fixtures = require('require-dir')('./fixtures')
+
+test('Package', function (t) {
+  var pkg = new Package(fixtures.express)
+
+  t.comment('basic properties')
+  t.equal(pkg.name, 'express', 'name')
+  t.ok(pkg.description, 'description')
+  t.ok(pkg.version, 'version')
+  t.ok(pkg.readme, 'readme')
+
+  t.comment('stars')
+  t.ok(pkg.stars > 1500, 'turns `users` object into a star count')
+
+  t.comment('versions')
+  t.ok(pkg.versions.length > 20, 'turns `time` object into a versions array')
+  t.ok(pkg.versions.every(version => version.number.length > 0), 'every version has a number')
+  t.ok(pkg.versions.every(version => !!semver.valid(version.number)), 'every version is valid semver')
+  t.ok(pkg.versions.every(version => version.date.length > 0), 'every version has a date')
+  t.ok(pkg.created, 'keeps package created date')
+  t.ok(pkg.modified, 'keeps package modified date')
+
+  t.comment('renamed stuff')
+  t.ok(pkg.owners, 'renames `maintainers` to `owners`')
+  t.ok(pkg.owners.find(owner => owner.name === 'dougwilson'), 'keeps owners object structure')
+  t.ok(pkg.lastPublisher, 'renames `_npmUser` to `lastPublisher`')
+
+  t.comment('unwanted stuff')
+  t.notOk(pkg.directories, 'directories')
+  t.notOk(pkg.bugs, 'bugs')
+  t.notOk(pkg._id, '_id')
+  t.notOk(pkg._shasum, '_shasum')
+  t.notOk(pkg._from, '_from')
+
+  t.end()
+})

@@ -1,0 +1,41 @@
+{
+  "name": "nice-package",
+  "version": "1.0.0",
+  "description": "Clean up messy package metadata from the npm registry",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/index.js | tap-spec && standard"
+  },
+  "repository": "https://github.com/zeke/nice-package",
+  "keywords": [
+    "npm",
+    "registry",
+    "package",
+    "metadata",
+    "package.json",
+    "normalize",
+    "clean",
+    "JSON"
+  ],
+  "author": "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zeke/nice-package/issues"
+  },
+  "homepage": "https://github.com/zeke/nice-package#readme",
+  "devDependencies": {
+    "require-dir": "^0.3.0",
+    "standard": "^7.1.2",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0"
+  },
+  "dependencies": {
+    "github-url-to-object": "^2.2.1",
+    "normalize-registry-metadata": "^1.1.2",
+    "revalidator": "^0.3.1",
+    "semver": "^5.2.0"
+  },
+  "engines": {
+    "node": ">4"
+  }
+}
