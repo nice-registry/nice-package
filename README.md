@@ -73,6 +73,32 @@ A getter method that returns an array of the `dependencies` keys.
 
 A getter method that returns an array of the `devDependencies` keys.
 
+## Validation
+
+`nice-package` uses a [JSON schema](lib/schema.js) to validate packages.
+
+The following properties are required:
+
+- `name` String
+- `description` String
+- `version` String
+
+To determine if a package is valid, use the `pkg.valid` getter method:
+
+``js
+pkg.valid
+// => false
+```
+
+To see validation errors on a package, use the `pkg.validationErrors` getter method:
+
+```js
+pkg.validationErrors
+```
+
+The result is an array of
+[revalidator errors](https://github.com/flatiron/revalidator#example).
+
 ## Tests
 
 ```sh
