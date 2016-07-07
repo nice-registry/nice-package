@@ -16,6 +16,7 @@ package cleanup:
 - turns the `time` object into an array of version data
 - renames `_npmUser` to `lastPublisher`
 - renames `maintainers` to `owners`
+- parses GitHUB repository URLs into [useful objects](https://github.com/zeke/github-url-to-object#readme)
 - removes internal bookkeeping properties like `_id` and `_from`
 - [more...](tests/index.js)
 

@@ -46,9 +46,24 @@ test('Package', function (t) {
   t.ok(pkg.mentions('minimalist web framework'), '`mentions` looks for a string anywhere in the object')
   t.ok(pkg.mentions('MINIMALIST WEB FRAMEWORK'), '`mentions` is case insensitive')
 
-  t.comment('reusing packages')
+  t.comment('reusing clean packages')
   var repkg = new Package(pkg)
   t.ok(repkg.name, 'packages can be reconstituted from an already-cleaned package object')
+
+  t.comment('validation')
+  t.ok(pkg.valid, 'package is valid if required properties are present')
+
+  delete pkg.description
+  t.notOk(pkg.valid, '`description` is required')
+  t.equal(pkg.validationErrors.length, 1, '`description` error is present')
+  t.equal(pkg.validationErrors[0].property, 'description', '`description` error is present')
+  pkg.description = 'Restore package validity'
+
+  delete pkg.name
+  t.notOk(pkg.valid, '`name` is required')
+  t.equal(pkg.validationErrors.length, 1, '`name` error is present')
+  t.equal(pkg.validationErrors[0].property, 'name', '`name` error is present')
+  pkg.name = 'express'
 
   t.end()
 })

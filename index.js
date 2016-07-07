@@ -33,4 +33,8 @@ module.exports = class Package {
   get valid () {
     return revalidator.validate(this, schema).valid
   }
+
+  get validationErrors () {
+    return revalidator.validate(this, schema).errors
+  }
 }
