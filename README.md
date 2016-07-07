@@ -2,11 +2,11 @@
 
 > Clean up messy package metadata from the npm registry
 
-The [package metadata served by the npm registry](http://registry.npmjs.com/express)
-is wonky and messy. npm, Inc maintains a package called
+The [package data served by the npm registry](http://registry.npmjs.com/express)
+is messy and confusing. The folks at npm, Inc maintain a tool called
 [normalize-registry-metadata](https://github.com/npm/normalize-package-data)
 which does a lot of work to clean this data up, but the resulting object is
-still kind of inhuman.
+still kind of inhumane.
 
 `nice-package` uses `normalize-package-data` as a baseline, then does even more
 package cleanup:
