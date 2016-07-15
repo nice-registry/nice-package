@@ -1,8 +1,11 @@
+'use strict';
 const revalidator = require('revalidator')
 const schema = require('./lib/schema')
 const clean = require('./lib/clean')
+const registryUrl = require('registry-url')()
+const got = require('got')
 
-module.exports = class Package {
+class Package {
   constructor (doc) {
     var pkg = clean(doc)
     if (!pkg) return
@@ -37,4 +40,12 @@ module.exports = class Package {
   get validationErrors () {
     return revalidator.validate(this, schema).errors
   }
+}
+
+module.exports = moduleName => {
+  return new Promise((resolve, reject) => {
+    return got(`${registryUrl}${moduleName}`, {json:true})
+    .then(resp => resolve(new Package(resp.body)))
+    .catch(err => reject(err))
+  })
 }

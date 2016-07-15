@@ -32,10 +32,9 @@ npm install nice-package --save
 call `new Package(doc)`, where `doc` is a JSON package object from the npm registry:
 
 ```js
-const got = require('got')
-const Package = require('nice-package')
+const package = require('nice-package')
 
-got('https://registry.npmjs.com/express', {json:true})
+package('express')
   .then(function(doc) {
     var pkg = new Package(doc)
     console.log(JSON.stringify(pkg, null, 2))
