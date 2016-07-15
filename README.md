@@ -20,6 +20,9 @@ package cleanup:
 - removes internal bookkeeping properties like `_id` and `_from`
 - [more...](tests/index.js)
 
+See also [package-stream](https://github.com/zeke/package-stream/), a
+tool that streams nice packages from the npm registry.
+
 ## Installation
 
 ```sh
