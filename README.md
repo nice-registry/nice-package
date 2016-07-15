@@ -85,7 +85,7 @@ The following properties are required:
 
 To determine if a package is valid, use the `pkg.valid` getter method:
 
-``js
+```js
 pkg.valid
 // => false
 ```
