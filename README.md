@@ -20,8 +20,11 @@ package cleanup:
 - removes internal bookkeeping properties like `_id` and `_from`
 - [more...](tests/index.js)
 
-See also [package-stream](https://github.com/zeke/package-stream/), a
-tool that streams nice packages from the npm registry.
+## See Also
+
+- [package-stream](https://github.com/zeke/package-stream/): streams nice packages
+from the npm registry.
+- [fetch-nice-pacakge](https://github.com/hemanth/fetch-nice-package): fetch a nice package by name.
 
 ## Installation
 
