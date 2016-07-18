@@ -1,4 +1,4 @@
-# nice-package ✨📦✨
+# nice-package ✨📦✨  [![Build Status](https://travis-ci.org/zeke/nice-package.svg?branch=master)](https://travis-ci.org/zeke/nice-package)
 
 > Clean up messy package metadata from the npm registry
 
