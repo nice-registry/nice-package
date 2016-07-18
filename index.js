@@ -1,3 +1,4 @@
+'use strict'
 const revalidator = require('revalidator')
 const schema = require('./lib/schema')
 const clean = require('./lib/clean')
