@@ -4,7 +4,7 @@
 
 The [package data served by the npm registry](http://registry.npmjs.com/express)
 is messy and confusing. The folks at npm, Inc maintain a tool called
-[normalize-registry-metadata](https://github.com/npm/normalize-package-data)
+[normalize-package-data](https://github.com/npm/normalize-package-data)
 which does a lot of work to clean this data up, but the resulting object is
 still kind of inhumane.
 
