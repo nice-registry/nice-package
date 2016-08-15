@@ -24,7 +24,7 @@ package cleanup:
 
 - [package-stream](https://github.com/zeke/package-stream/): streams nice packages
 from the npm registry.
-- [fetch-nice-pacakge](https://github.com/hemanth/fetch-nice-package): fetch a nice package by name.
+- [fetch-nice-package](https://github.com/hemanth/fetch-nice-package): fetch a nice package by name.
 
 ## Installation
 
