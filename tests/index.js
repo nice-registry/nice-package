@@ -50,6 +50,12 @@ test('Package', function (t) {
   var repkg = new Package(pkg)
   t.ok(repkg.name, 'packages can be reconstituted from an already-cleaned package object')
 
+  t.comment('creating with package.json data instead of registry data')
+  var packageJSONPackage = new Package(fixtures.spectron)
+  t.equal(packageJSONPackage.name, 'spectron', 'packages can be constituted from package.json data')
+  t.ok(packageJSONPackage.dependsOn('webdriverio'), 'and the convenience methods still work')
+  t.ok(packageJSONPackage.devDependsOn('mocha'), 'and the convenience methods still work')
+
   t.comment('validation')
   t.ok(pkg.valid, 'package is valid if required properties are present')
 

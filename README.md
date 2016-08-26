@@ -48,6 +48,16 @@ got('https://registry.npmjs.com/express', {json:true})
   })
 ```
 
+You can also instantiate a nice package from `package.json` data:
+
+```js
+const Package = require('nice-package')
+const pkg = new Package(require('node_modules/express/package.json'))
+
+pkg.dependsOn('array-flatten')
+// => true
+```
+
 ### Convenience Methods
 
 A nice package comes with convenience methods:
