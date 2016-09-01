@@ -41,8 +41,8 @@ call `new Package(doc)`, where `doc` is a JSON package object from the npm regis
 const got = require('got')
 const Package = require('nice-package')
 
-got('https://registry.npmjs.com/express', {json:true})
-  .then(function(doc) {
+got('https://registry.npmjs.com/express', {json: true})
+  .then(function (doc) {
     var pkg = new Package(doc)
     console.log(JSON.stringify(pkg, null, 2))
   })

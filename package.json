@@ -4,7 +4,7 @@
   "description": "Clean up messy package metadata from the npm registry",
   "main": "index.js",
   "scripts": {
-    "test": "node tests/index.js | tap-spec && standard"
+    "test": "node tests/index.js | tap-spec && standard && standard-markdown"
   },
   "repository": "https://github.com/zeke/nice-package",
   "keywords": [
@@ -26,6 +26,7 @@
   "devDependencies": {
     "require-dir": "^0.3.0",
     "standard": "^7.1.2",
+    "standard-markdown": "^1.2.1",
     "tap-spec": "^4.1.1",
     "tape": "^4.6.0"
   },
