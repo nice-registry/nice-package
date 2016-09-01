@@ -41,8 +41,8 @@ call `new Package(doc)`, where `doc` is a JSON package object from the npm regis
 const got = require('got')
 const Package = require('nice-package')
 
-got('https://registry.npmjs.com/express', {json:true})
-  .then(function(doc) {
+got('https://registry.npmjs.com/express', {json: true})
+  .then(function (doc) {
     var pkg = new Package(doc)
     console.log(JSON.stringify(pkg, null, 2))
   })
@@ -81,6 +81,13 @@ Returns a Boolean indicating whether the given `pkgName` is listed in `dependenc
 
 Returns a Boolean indicating whether the given `pkgName` is listed in `devDependencies`.
 
+#### `pkg.somehowDependsOn(pkgName)`
+
+* `pkgName` String - The name of another package
+
+Returns a Boolean indicating whether the given `pkgName` is listed in
+`dependencies` or `devDependencies`.
+
 #### `pkg.depNames`
 
 A getter method that returns an array of the `dependencies` keys.
@@ -88,6 +95,11 @@ A getter method that returns an array of the `dependencies` keys.
 #### `pkg.devDepNames`
 
 A getter method that returns an array of the `devDependencies` keys.
+
+#### `pkg.allDepNames`
+
+A getter method that returns an array of all the `dependencies` and
+`devDependencies` keys.
 
 ## Validation
 
