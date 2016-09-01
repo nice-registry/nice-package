@@ -1,0 +1,9 @@
+{
+  "about": "not much here in this package.json. missing name, description, etc",
+  "dependencies": {
+    "request": "^2.65.0"
+  },
+  "devDependencies": {
+    "chai": "^3.3.0"
+  }
+}

@@ -46,16 +46,6 @@ test('Package', function (t) {
   t.ok(pkg.mentions('minimalist web framework'), '`mentions` looks for a string anywhere in the object')
   t.ok(pkg.mentions('MINIMALIST WEB FRAMEWORK'), '`mentions` is case insensitive')
 
-  t.comment('reusing clean packages')
-  var repkg = new Package(pkg)
-  t.ok(repkg.name, 'packages can be reconstituted from an already-cleaned package object')
-
-  t.comment('creating with package.json data instead of registry data')
-  var packageJSONPackage = new Package(fixtures.spectron)
-  t.equal(packageJSONPackage.name, 'spectron', 'packages can be constituted from package.json data')
-  t.ok(packageJSONPackage.dependsOn('webdriverio'), 'and the convenience methods still work')
-  t.ok(packageJSONPackage.devDependsOn('mocha'), 'and the convenience methods still work')
-
   t.comment('validation')
   t.ok(pkg.valid, 'package is valid if required properties are present')
 
@@ -71,5 +61,20 @@ test('Package', function (t) {
   t.equal(pkg.validationErrors[0].property, 'name', '`name` error is present')
   pkg.name = 'express'
 
+  t.comment('reusing clean packages')
+  var repkg = new Package(pkg)
+  t.ok(repkg.name, 'packages can be reconstituted from an already-cleaned package object')
+
+  t.comment('using package.json data instead of registry data')
+  var packageJSONPackage = new Package(fixtures.spectron)
+  t.equal(packageJSONPackage.name, 'spectron', 'packages can be constituted from package.json data')
+  t.ok(packageJSONPackage.dependsOn('webdriverio'), 'and the convenience methods still work')
+  t.ok(packageJSONPackage.devDependsOn('mocha'), 'and the convenience methods still work')
+
+  t.comment('using incomplete package.json data')
+  var sparsePackage = new Package(fixtures.sparse)
+  t.notOk(sparsePackage.name, 'does not have a name')
+  t.notOk(sparsePackage.valid, 'is not valid')
+  t.ok(sparsePackage.dependsOn('request'), 'still has working convenience methods')
   t.end()
 })
