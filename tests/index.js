@@ -40,8 +40,8 @@ test('Package', function (t) {
   t.notOk(pkg.dependsOn('monkeys'), 'dependsOn')
   t.ok(pkg.devDependsOn('istanbul'), 'devDependsOn')
 
-  t.ok(pkg.dependsSomehowOn('finalhandler'), 'dependsSomehowOn includes deps')
-  t.ok(pkg.dependsSomehowOn('istanbul'), 'dependsSomehowOn includes devDeps')
+  t.ok(pkg.somehowDependsOn('finalhandler'), 'somehowDependsOn includes deps')
+  t.ok(pkg.somehowDependsOn('istanbul'), 'somehowDependsOn includes devDeps')
 
   t.ok(pkg.depNames.indexOf('finalhandler') > -1, 'depNames')
   t.ok(pkg.devDepNames.indexOf('istanbul') > -1, 'devDepNames')

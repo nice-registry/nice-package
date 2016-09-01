@@ -23,7 +23,7 @@ module.exports = class Package {
     return this.devDepNames.indexOf(dep) > -1
   }
 
-  dependsSomehowOn (dep) {
+  somehowDependsOn (dep) {
     return this.dependsOn(dep) || this.devDependsOn(dep)
   }
 
