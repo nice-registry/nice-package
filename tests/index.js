@@ -40,8 +40,14 @@ test('Package', function (t) {
   t.notOk(pkg.dependsOn('monkeys'), 'dependsOn')
   t.ok(pkg.devDependsOn('istanbul'), 'devDependsOn')
 
+  t.ok(pkg.dependsSomehowOn('finalhandler'), 'dependsSomehowOn includes deps')
+  t.ok(pkg.dependsSomehowOn('istanbul'), 'dependsSomehowOn includes devDeps')
+
   t.ok(pkg.depNames.indexOf('finalhandler') > -1, 'depNames')
   t.ok(pkg.devDepNames.indexOf('istanbul') > -1, 'devDepNames')
+
+  t.ok(pkg.allDepNames.indexOf('finalhandler') > -1, 'allDepNames includes depNames')
+  t.ok(pkg.allDepNames.indexOf('istanbul') > -1, 'allDepNames includes devDepNames')
 
   t.ok(pkg.mentions('minimalist web framework'), '`mentions` looks for a string anywhere in the object')
   t.ok(pkg.mentions('MINIMALIST WEB FRAMEWORK'), '`mentions` is case insensitive')

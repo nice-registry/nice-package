@@ -23,12 +23,20 @@ module.exports = class Package {
     return this.devDepNames.indexOf(dep) > -1
   }
 
+  dependsSomehowOn (dep) {
+    return this.dependsOn(dep) || this.devDependsOn(dep)
+  }
+
   get depNames () {
-    return this.dependencies ? Object.keys(this.dependencies) : []
+    return this.dependencies ? Object.keys(this.dependencies).sort() : []
   }
 
   get devDepNames () {
-    return this.devDependencies ? Object.keys(this.devDependencies) : []
+    return this.devDependencies ? Object.keys(this.devDependencies).sort() : []
+  }
+
+  get allDepNames () {
+    return this.depNames.concat(this.devDepNames).sort()
   }
 
   get valid () {
