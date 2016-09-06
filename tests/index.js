@@ -82,5 +82,11 @@ test('Package', function (t) {
   t.notOk(sparsePackage.name, 'does not have a name')
   t.notOk(sparsePackage.valid, 'is not valid')
   t.ok(sparsePackage.dependsOn('request'), 'still has working convenience methods')
+
+  t.comment('non-GitHub repository URLs')
+  var bitty = new Package(fixtures.bitbucket)
+  t.equal(bitty.repository.type, 'git', 'retains type value')
+  t.equal(bitty.repository.url, 'https://bitbucket.org/monkey/business.git', 'retains url value')
+
   t.end()
 })
