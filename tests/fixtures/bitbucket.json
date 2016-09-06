@@ -1,0 +1,9 @@
+{
+  "name": "bitty-buck",
+  "version": "1.0.0",
+  "description": "my repo URL is not on GitHub and that's okay",
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/monkey/business.git"
+  }
+}
