@@ -88,5 +88,9 @@ test('Package', function (t) {
   t.equal(bitty.repository.type, 'git', 'retains type value')
   t.equal(bitty.repository.url, 'https://bitbucket.org/monkey/business.git', 'retains url value')
 
+  t.comment('packages with `valid` property')
+  var val = new Package(fixtures['disallowed-valid-property'])
+  t.ok(val.valid, 'it ignores the provided property in favor of internal getter')
+
   t.end()
 })

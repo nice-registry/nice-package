@@ -1,0 +1,5 @@
+{
+  "name": "disallowed-valid-property",
+  "description": "a package that has a property named `valid` in its package.json",
+  "valid": false
+}
