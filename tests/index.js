@@ -92,5 +92,11 @@ test('Package', function (t) {
   var val = new Package(fixtures['disallowed-valid-property'])
   t.ok(val.valid, 'it ignores the provided property in favor of internal getter')
 
+  t.comment('empty package data')
+  t.doesNotThrow(function () {
+    var pkg = new Package(null)
+    pkg
+  }, 'does not throw an error when passed a null doc')
+
   t.end()
 })
