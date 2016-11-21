@@ -8,6 +8,16 @@ module.exports = class Package {
     var pkg = clean(doc)
     if (!pkg) return
     Object.assign(this, pkg)
+
+    try {
+      const {dependentsOf, devDependentsOf} = require('dependent-packages')
+      this.dependents = dependentsOf(this.name)
+      this.devDependents = devDependentsOf(this.name)
+      this.totalDependents = this.dependents.length + this.devDependents.length
+    } catch (e) {
+      // 'dependent-packages' is not installed. No big deal.
+    }
+
     return this
   }
 
