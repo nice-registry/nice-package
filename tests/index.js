@@ -83,6 +83,10 @@ test('Package', function (t) {
   t.notOk(sparsePackage.valid, 'is not valid')
   t.ok(sparsePackage.dependsOn('request'), 'still has working convenience methods')
 
+  t.comment('GitHub repository URL')
+  var gitty = new Package(fixtures.express)
+  t.equal(gitty.repository, 'https://github.com/expressjs/express', `is an HTTPS URL ${gitty.repository}`)
+
   t.comment('non-GitHub repository URLs')
   var bitty = new Package(fixtures.bitbucket)
   t.equal(bitty.repository.type, 'git', 'retains type value')
