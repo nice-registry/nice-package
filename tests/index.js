@@ -67,6 +67,21 @@ test('Package', function (t) {
   t.equal(pkg.validationErrors[0].property, 'name', '`name` error is present')
   pkg.name = 'express'
 
+  t.comment('picking properties with pick')
+  var opts = {
+    pick: ['name', 'description']
+  }
+  var pickedPackage = new Package(pkg, opts)
+  t.deepEqual(Object.keys(pickedPackage), ['name', 'description'], 'package properties can be picked')
+
+  t.comment('omitting properties with omit')
+  opts = {
+    omit: ['description']
+  }
+  var omittedPackage = new Package(pkg, opts)
+  t.ok(!('description' in omittedPackage), 'package properties can be omitted')
+  t.ok(('name' in omittedPackage), 'package properties are retained if not omitted')
+
   t.comment('reusing clean packages')
   var repkg = new Package(pkg)
   t.ok(repkg.name, 'packages can be reconstituted from an already-cleaned package object')

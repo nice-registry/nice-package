@@ -58,6 +58,26 @@ pkg.dependsOn('array-flatten')
 // => true
 ```
 
+### Customizing the Package Object
+
+You can [pick](https://lodash.com/docs/4.17.2#pick) specific properties to return:
+
+```js
+const pkg = new Package(pkgData, {pick: ['name', 'description']})
+
+// {
+//   name: 'tlds',
+//   description: 'List of TLDs'
+// }
+```
+
+or you can [omit](https://lodash.com/docs/4.17.2#pick) properties.
+Sometimes you don't want the readme and the version data.
+
+```js
+const pkg = new Package(pkgData, {omit: ['readme', 'versions']})
+```
+
 ### Convenience Methods
 
 A nice package comes with convenience methods:

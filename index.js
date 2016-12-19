@@ -1,12 +1,23 @@
 'use strict'
 const revalidator = require('revalidator')
 const schema = require('./lib/schema')
+const pick = require('lodash').pick
+const omit = require('lodash').omit
 const clean = require('./lib/clean')
 
 module.exports = class Package {
-  constructor (doc) {
+  constructor (doc, opts) {
     var pkg = clean(doc)
     if (!pkg) return
+
+    if (opts && opts.pick && Array.isArray(opts.pick)) {
+      pkg = pick(pkg, opts.pick)
+    }
+
+    if (opts && opts.omit && Array.isArray(opts.omit)) {
+      pkg = omit(pkg, opts.omit)
+    }
+
     Object.assign(this, pkg)
     return this
   }
