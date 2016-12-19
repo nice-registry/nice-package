@@ -52,6 +52,11 @@ test('Package', function (t) {
   t.ok(pkg.mentions('minimalist web framework'), '`mentions` looks for a string anywhere in the object')
   t.ok(pkg.mentions('MINIMALIST WEB FRAMEWORK'), '`mentions` is case insensitive')
 
+  t.comment('dependents data')
+  t.ok(pkg.dependents.length > 100, 'has `dependents` array')
+  t.ok(pkg.devDependents.length > 100, 'has `devDependents` array')
+  t.ok(pkg.totalDependents > 100, 'has `totalDependents`')
+
   t.comment('validation')
   t.ok(pkg.valid, 'package is valid if required properties are present')
 

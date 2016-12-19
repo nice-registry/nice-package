@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/zeke/nice-package#readme",
   "devDependencies": {
+    "dependent-packages": "^2.0.0",
     "require-dir": "^0.3.0",
     "standard": "^7.1.2",
     "standard-markdown": "^1.2.1",
