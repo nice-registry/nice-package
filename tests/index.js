@@ -74,6 +74,10 @@ test('Package', function (t) {
   var pickedPackage = new Package(pkg, opts)
   t.deepEqual(Object.keys(pickedPackage), ['name', 'description'], 'package properties can be picked')
 
+  t.comment('picking properties with comma-delimited pick string')
+  var pickedPackage2 = new Package(pkg, {pick: 'name,versions,keywords'})
+  t.deepEqual(Object.keys(pickedPackage2), ['name', 'versions', 'keywords'], 'package properties can be picked with a delimited string')
+
   t.comment('omitting properties with omit')
   opts = {
     omit: ['description']
@@ -81,6 +85,11 @@ test('Package', function (t) {
   var omittedPackage = new Package(pkg, opts)
   t.ok(!('description' in omittedPackage), 'package properties can be omitted')
   t.ok(('name' in omittedPackage), 'package properties are retained if not omitted')
+
+  t.comment('omitting properties with comma-delimited omit string')
+  var omittedPackage2 = new Package(pkg, {omit: 'name,keywords'})
+  t.ok(!('name' in omittedPackage2), 'package properties can be omitted')
+  t.ok(('description' in omittedPackage2), 'package properties are retained if not omitted')
 
   t.comment('reusing clean packages')
   var repkg = new Package(pkg)

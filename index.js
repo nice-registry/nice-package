@@ -10,11 +10,13 @@ module.exports = class Package {
     var pkg = clean(doc)
     if (!pkg) return
 
-    if (opts && opts.pick && Array.isArray(opts.pick)) {
+    if (opts && opts.pick) {
+      if (typeof opts.pick === 'string') opts.pick = opts.pick.split(',').map(prop => prop.trim())
       pkg = pick(pkg, opts.pick)
     }
 
-    if (opts && opts.omit && Array.isArray(opts.omit)) {
+    if (opts && opts.omit) {
+      if (typeof opts.omit === 'string') opts.omit = opts.omit.split(',').map(prop => prop.trim())
       pkg = omit(pkg, opts.omit)
     }
 
