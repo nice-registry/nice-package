@@ -181,4 +181,12 @@ describe('Package', () => {
     }
     expect(fn).to.not.throw
   })
+
+  it('accepts a doc object with other cobbled-on top-level properties', () => {
+    //
+    const cobbledFixture = Object.assign({}, fixtures.express, {fooProp: 1, barProp: 2})
+    expect(cobbledFixture.fooProp).to.equal(1)
+    const cobbledPackage = new Package(cobbledFixture)
+    expect(cobbledPackage.fooProp).to.equal(1)
+  })
 })
