@@ -4,7 +4,7 @@
   "description": "Clean up messy package metadata from the npm registry",
   "main": "index.js",
   "scripts": {
-    "test": "node tests/index.js | tap-spec && standard && standard-markdown"
+    "test": "mocha && standard && standard-markdown"
   },
   "repository": "https://github.com/zeke/nice-package",
   "keywords": [
@@ -19,16 +19,12 @@
   ],
   "author": "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/zeke/nice-package/issues"
-  },
-  "homepage": "https://github.com/zeke/nice-package#readme",
   "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
     "require-dir": "^0.3.0",
     "standard": "^7.1.2",
-    "standard-markdown": "^1.2.1",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.6.0"
+    "standard-markdown": "^1.2.1"
   },
   "dependencies": {
     "github-url-to-object": "^2.2.1",
@@ -39,5 +35,10 @@
   },
   "engines": {
     "node": ">=4"
+  },
+  "standard": {
+    "env": {
+      "mocha": true
+    }
   }
 }
