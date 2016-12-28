@@ -73,15 +73,19 @@ const pkg = new Package(pkgData, {pick: ['name', 'description']})
 ```
 
 or you can [omit](https://lodash.com/docs/4.17.2#omit) properties.
-Sometimes you don't want the readme and the version data.
+Sometimes you don't want the `other` data, the `readme`, etc.
 
 ```js
-const pkg = new Package(pkgData, {omit: ['readme', 'versions']})
+const pkg = new Package(pkgData, {omit: ['other', 'readme', 'versions']})
 ```
 
 Note: `pick` and `omit` will also accept comma-delimited strings instead
 of arrays. This works nicely if you're using query params from a URL as `options` to
-`nice-package`.
+`nice-package`:
+
+```js
+const pkg = new Package(pkgData, {omit: 'other,readme,versions'})
+```
 
 ### Convenience Methods
 
