@@ -16,8 +16,8 @@ describe('Package', () => {
   })
 
   describe('derived properties', () => {
-    it('derives `stars` from  `users` object', () => {
-      expect(pkg.stars).to.be.above(1500)
+    it('derives `starsCounts` from  `users` object', () => {
+      expect(pkg.starsCount).to.be.above(1500)
     })
 
     it('derives `versions` from `time` object', () => {

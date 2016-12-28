@@ -6,24 +6,25 @@ The [package data served by the npm registry](http://registry.npmjs.com/express)
 is messy and confusing. The folks at npm, Inc maintain a tool called
 [normalize-package-data](https://github.com/npm/normalize-package-data)
 which does a lot of work to clean this data up, but the resulting object is
-still kind of inhumane.
+still a bit confusing.
 
-`nice-package` uses `normalize-package-data` as a baseline, then does even more
+`nice-package` uses `normalize-package-data` as a starter, then does even more
 package cleanup:
 
 - uses the `doc['dist-tags'].latest` as the baseline for package metadata
-- turns `users` object into a star count
-- turns the `time` object into an array of version data
-- renames `_npmUser` to `lastPublisher`
-- renames `maintainers` to `owners`
+- derives `starsCount` from the `users` object
+- derives a `versions` array from the `time` object
+- renames `_npmUser` to `lastPublisher`, because it's a more intuitive name.
+- renames `maintainers` to `owners`, for consistency with the CLI commands.
 - normalizes GitHub repository URLs to `https` format
-- removes internal bookkeeping properties like `_id` and `_from`
+- moves internal bookkeeping properties like `_id` and `_from` into an `other` object that can easily be omitted.
 - [more...](tests/index.js)
 
 ## See Also
 
 - [package-stream](https://github.com/zeke/package-stream/): streams nice packages
 from the npm registry.
+- [nice-registry](https://github.com/zeke/nice-registry/): A server that dishes out nice packges.
 - [fetch-nice-package](https://github.com/hemanth/fetch-nice-package): fetch a nice package by name.
 
 ## Installation
