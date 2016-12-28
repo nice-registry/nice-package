@@ -6,45 +6,43 @@ const fixtures = require('require-dir')('./fixtures')
 describe('Package', () => {
   var pkg = new Package(fixtures.express)
 
-  it('has basic properties', () => {
+  it('preserves basic properties', () => {
     expect(pkg.name).to.equal('express')
     expect(pkg.description).to.exist
     expect(pkg.version).to.exist
     expect(pkg.readme).to.exist
-  })
-
-  it('turns `users` object into a star count', () => {
-    expect(pkg.stars).to.be.above(1500)
-  })
-
-  it('turns `time` into a versions object', () => {
-    expect(pkg.versions.length).to.be.above(20)
-    expect(pkg.versions.every(version => version.number.length > 0)).to.be.true
-    expect(pkg.versions.every(version => !!semver.valid(version.number))).to.be.true
-    expect(pkg.versions.every(version => version.date.length > 0)).to.be.true
-  })
-
-  it('preserves timestamps', () => {
     expect(pkg.created).to.exist
     expect(pkg.modified).to.exist
   })
 
-  it('renames `maintainers` to `owners`', () => {
-    expect(pkg.maintainers).to.not.exist
-    expect(pkg.owners.find(owner => owner.name === 'dougwilson')).to.exist
+  describe('derived properties', () => {
+    it('derives `stars` from  `users` object', () => {
+      expect(pkg.stars).to.be.above(1500)
+    })
+
+    it('derives `versions` from `time` object', () => {
+      expect(pkg.versions.length).to.be.above(20)
+      expect(pkg.versions.every(version => version.number.length > 0)).to.be.true
+      expect(pkg.versions.every(version => !!semver.valid(version.number))).to.be.true
+      expect(pkg.versions.every(version => version.date.length > 0)).to.be.true
+    })
+
+    it('derives `owners` from `maintainers`', () => {
+      expect(pkg.owners.find(owner => owner.name === 'dougwilson')).to.exist
+    })
+
+    it('derives `lastPublisher` from `_npmUser`', () => {
+      expect(pkg.lastPublisher).to.exist
+    })
   })
 
-  it('renames `_npmUser` to `lastPublisher`', () => {
-    expect(pkg.lastPublisher).to.exist
-    expect(pkg._npmUser).to.not.exist
-  })
-
-  it('removes unwanted props', () => {
-    expect(pkg.directories).to.not.exist
-    expect(pkg.bugs).to.not.exist
-    expect(pkg._id).to.not.exist
-    expect(pkg._shasum).to.not.exist
-    expect(pkg._from).to.not.exist
+  it('preserves unwanted properties in an `other` object', () => {
+    expect(pkg.other._from).to.exist
+    expect(pkg.other._id).to.exist
+    expect(pkg.other._shasum).to.exist
+    expect(pkg.other._npmUser).to.exist
+    expect(pkg.other.maintainers).to.exist
+    expect(pkg.other.time).to.exist
   })
 
   describe('convenience functions', () => {
@@ -138,22 +136,24 @@ describe('Package', () => {
     })
   })
 
-  it('can reconstitute packages from an already-cleaned package object', () => {
-    const repkg = new Package(pkg)
-    expect(repkg.name).to.equal('express')
-  })
+  describe('source data', () => {
+    it('can reconstitute packages from an already-cleaned package object', () => {
+      const repkg = new Package(pkg)
+      expect(repkg.name).to.equal('express')
+    })
 
-  it('accepts package.json data instead of registry data', () => {
-    const packageJSONPackage = new Package(fixtures.spectron)
-    expect(packageJSONPackage.name).to.equal('spectron')
-    expect(packageJSONPackage.dependsOn('webdriverio')).to.be.true
-  })
+    it('accepts package.json data instead of registry data', () => {
+      const packageJSONPackage = new Package(fixtures.spectron)
+      expect(packageJSONPackage.name).to.equal('spectron')
+      expect(packageJSONPackage.dependsOn('webdriverio')).to.be.true
+    })
 
-  it('accepts incomplete package.json data but still exposes convenience methods', () => {
-    const sparsePackage = new Package(fixtures.sparse)
-    expect(sparsePackage.name).to.not.exist
-    expect(sparsePackage.valid).to.be.false
-    expect(sparsePackage.dependsOn('request')).to.be.true
+    it('accepts incomplete package.json data but still exposes convenience methods', () => {
+      const sparsePackage = new Package(fixtures.sparse)
+      expect(sparsePackage.name).to.not.exist
+      expect(sparsePackage.valid).to.be.false
+      expect(sparsePackage.dependsOn('request')).to.be.true
+    })
   })
 
   describe('repository', () => {
