@@ -36,13 +36,21 @@ describe('Package', () => {
     })
   })
 
-  it('preserves unwanted properties in an `other` object', () => {
-    expect(pkg.other._from).to.exist
-    expect(pkg.other._id).to.exist
-    expect(pkg.other._shasum).to.exist
-    expect(pkg.other._npmUser).to.exist
-    expect(pkg.other.maintainers).to.exist
-    expect(pkg.other.time).to.exist
+  describe('other properties', () => {
+    it('preserves unwanted properties in an `other` object', () => {
+      expect(pkg.other._from).to.exist
+      expect(pkg.other._id).to.exist
+      expect(pkg.other._shasum).to.exist
+      expect(pkg.other._npmUser).to.exist
+      expect(pkg.other.maintainers).to.exist
+      expect(pkg.other.time).to.exist
+    })
+
+    it('does not preserve the other object if it is empty', () => {
+      const pkg = new Package({name: 'foo', description: 'bar'})
+      expect(pkg.name).to.equal('foo')
+      expect(pkg.other).to.not.exist
+    })
   })
 
   describe('convenience functions', () => {
@@ -82,6 +90,11 @@ describe('Package', () => {
   describe('validation', () => {
     it('is valid if all required properties are present', () => {
       expect(pkg.valid).to.be.true
+    })
+
+    it('ignores the `valid` property, if present, in favor of internal getter', () => {
+      const fakeValidPkg = new Package(fixtures['disallowed-valid-property'])
+      expect(fakeValidPkg.valid).to.be.true
     })
 
     it('requires description', () => {
@@ -167,11 +180,6 @@ describe('Package', () => {
       expect(bitty.repository.type).to.equal('git')
       expect(bitty.repository.url).to.equal('https://bitbucket.org/monkey/business.git')
     })
-  })
-
-  it('ignores the `valid` property, if present, in favor of internal getter', () => {
-    const fakeValidPkg = new Package(fixtures['disallowed-valid-property'])
-    expect(fakeValidPkg.valid).to.be.true
   })
 
   it('does not throw an error when passed a null doc', () => {
