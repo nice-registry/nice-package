@@ -18,7 +18,7 @@ package cleanup:
 - renames `maintainers` to `owners`, for consistency with the CLI commands.
 - normalizes GitHub repository URLs to `https` format
 - moves internal bookkeeping properties like `_id` and `_from` into an `other` object that can easily be omitted.
-- [more...](tests/index.js)
+- [more...](test/index.js)
 
 ## See Also
 
