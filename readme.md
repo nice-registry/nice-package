@@ -2,6 +2,16 @@
 
 > Clean up messy package metadata from the npm registry
 
+## Who Uses It
+
+This package is used by [@algolia](https://github.com/algolia)'s
+[npm-search](https://github.com/algolia/npm-search) project which powers
+the search engine on [yarnpkg.com](https://yarnpkg.com/). It is also used in
+lots of [nice-registry](https://github.com/nice-registry/cool-story-repo/issues) 
+projects.
+
+## What It Does
+
 The [package data served by the npm registry](http://registry.npmjs.com/express)
 is messy and confusing. The folks at npm, Inc maintain a tool called
 [normalize-package-data](https://github.com/npm/normalize-package-data)
@@ -30,7 +40,7 @@ from the npm registry.
 ## Installation
 
 ```sh
-npm install nice-package --save
+npm install nice-package
 ```
 
 ## Usage
