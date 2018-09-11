@@ -27,7 +27,7 @@
     "standard-markdown": "^1.2.1"
   },
   "dependencies": {
-    "github-url-to-object": "^2.2.1",
+    "github-url-to-object": "^4.0.4",
     "lodash": "^4.17.2",
     "normalize-registry-metadata": "^1.1.2",
     "revalidator": "^0.3.1",
