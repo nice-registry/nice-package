@@ -1,6 +1,6 @@
 {
   "name": "nice-package",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Clean up messy package metadata from the npm registry",
   "main": "index.js",
   "scripts": {
