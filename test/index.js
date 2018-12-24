@@ -97,15 +97,6 @@ describe('Package', () => {
       expect(fakeValidPkg.valid).to.be.true
     })
 
-    it('requires description', () => {
-      const oldDescription = pkg.description
-      delete pkg.description
-      expect(pkg.valid).to.be.false
-      expect(pkg.validationErrors.length).to.equal(1)
-      expect(pkg.validationErrors[0].property).to.equal('description')
-      pkg.description = oldDescription
-    })
-
     it('requires name', () => {
       const oldName = pkg.name
       delete pkg.name
