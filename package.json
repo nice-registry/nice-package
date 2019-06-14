@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha && standard && standard-markdown"
   },
-  "repository": "https://github.com/zeke/nice-package",
+  "repository": "https://github.com/nice-registry/nice-package",
   "keywords": [
     "npm",
     "registry",
