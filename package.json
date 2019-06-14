@@ -4,11 +4,9 @@
   "description": "Clean up messy package metadata from the npm registry",
   "main": "index.js",
   "scripts": {
-    "test": "mocha && standard && standard-markdown",
-    "travis-deploy-once": "travis-deploy-once",
-    "semantic-release": "semantic-release"
+    "test": "mocha && standard && standard-markdown"
   },
-  "repository": "https://github.com/zeke/nice-package",
+  "repository": "https://github.com/nice-registry/nice-package",
   "keywords": [
     "npm",
     "registry",
@@ -27,7 +25,6 @@
     "require-dir": "^0.3.0",
     "standard": "^7.1.2",
     "standard-markdown": "^1.2.1",
-    "travis-deploy-once": "^5.0.11",
     "semantic-release": "^15.13.16"
   },
   "dependencies": {
