@@ -28,7 +28,7 @@
     "standard": "^7.1.2",
     "standard-markdown": "^1.2.1",
     "travis-deploy-once": "^5.0.11",
-    "semantic-release": "^15.13.1"
+    "semantic-release": "^15.13.16"
   },
   "dependencies": {
     "github-url-to-object": "^4.0.4",
