@@ -1,4 +1,4 @@
-# nice-package ✨📦✨  [![Build Status](https://travis-ci.org/zeke/nice-package.svg?branch=master)](https://travis-ci.org/zeke/nice-package)
+# nice-package ✨📦✨  [![Build Status](https://travis-ci.org/nice-registry/nice-package.svg?branch=master)](https://travis-ci.org/nice-registry/nice-package)
 
 > Clean up messy package metadata from the npm registry
 
@@ -22,9 +22,9 @@ package cleanup:
 
 ## See Also
 
-- [package-stream](https://github.com/zeke/package-stream/): streams nice packages
+- [package-stream](https://github.com/nice-registry/package-stream/): streams nice packages
 from the npm registry.
-- [nice-registry](https://github.com/zeke/nice-registry/): A server that dishes out nice packges.
+- [nice-registry](https://github.com/nice-registry/nice-registry/): A server that dishes out nice packges.
 - [fetch-nice-package](https://github.com/hemanth/fetch-nice-package): fetch a nice package by name.
 
 ## Installation
@@ -165,7 +165,7 @@ npm test
 
 ## Dependencies
 
-- [github-url-to-object](https://github.com/zeke/github-url-to-object): Extract user, repo, and other interesting properties from GitHub URLs
+- [github-url-to-object](https://github.com/github-modules/github-url-to-object): Extract user, repo, and other interesting properties from GitHub URLs
 - [normalize-registry-metadata](https://github.com/npm/normalize-registry-metadata): clean package metadata objects you get from registry changes feeds
 - [revalidator](https://github.com/flatiron/revalidator): A cross-browser / node.js validator powered by JSON Schema
 - [semver](https://github.com/npm/node-semver): The semantic version parser used by npm.
